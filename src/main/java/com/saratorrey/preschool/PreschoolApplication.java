@@ -29,20 +29,12 @@ public class PreschoolApplication {
 		preschoolRepository.save( altonaPreschool );
 		System.out.println( altonaPreschool.toString() );
 
+		Preschool ottensenPreschool = new Preschool();
+		ottensenPreschool.setImage( "Ottensen" );
+		ottensenPreschool.setName( "" );
+		ottensenPreschool.setUrl( "" );
+		preschoolRepository.save( ottensenPreschool );
 
-
-		Preschool preschool2 = new Preschool();
-		preschool2.setImage( "Ottensen" );
-		preschool2.setName( "" );
-		preschool2.setUrl( "" );
-		preschoolRepository.save( preschool2 );
-		preschoolRepository.save( preschool2 );
-
-		Preschool preschool3 = new Preschool();
-		preschool3.setImage( "" );
-		preschool3.setName( "Sankt Pedro" );
-		preschool3.setUrl( "" );
-		preschoolRepository.save( preschool3 );
 	}
 
 }

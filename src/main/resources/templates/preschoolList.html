@@ -14,12 +14,11 @@
         <table>
             <th:block th:each="preschool : ${preschools}">
                 <tr>
-                    <td th:text="${preschool.name}">...</td>
-                    <div class="ui small circular image">
-                            <img th:src="${preschool.image}"/>
+                    <div class="ui medium rectangular image">
+                        <img th:src="${preschool.image}"/>
                     </div>
                     <td>
-                        <a th:href="${preschool.url}">Link</a>
+                        <a th:href="${preschool.url}" th:text="${preschool.name}"></a>
                     </td>
                 </tr>
             </th:block>
