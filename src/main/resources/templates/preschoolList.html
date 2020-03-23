@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Preschool List</title>
+    <link  rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css">
+    <link rel="stylesheet" type="text/css" href="landing.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js"></script>
+</head>
+<body>
+    <div class="ui raised very padded text container segment">
+
+        <table>
+            <th:block th:each="preschool : ${preschools}">
+                <tr>
+                    <td th:text="${preschool.name}">...</td>
+                    <div class="ui small circular image">
+                            <img th:src="${preschool.image}"/>
+                    </div>
+                    <td>
+                        <a th:href="${preschool.url}">Link</a>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+
+    </div>
+</body>
+</html>

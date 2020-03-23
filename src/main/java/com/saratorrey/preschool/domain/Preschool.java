@@ -54,4 +54,13 @@ public class Preschool {
 
         this.image = image;
     }
+
+
+    @Override public String toString() {
+
+        return "Preschool" +
+                + id +
+               "as shown in the photo" + image + "is called" + name + "the url is" +
+                url;
+    }
 }
