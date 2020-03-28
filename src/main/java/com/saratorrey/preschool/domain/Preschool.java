@@ -12,6 +12,7 @@ public class Preschool {
     private Long id;
 
     private String name;
+    private String shortDescription;
     private String url;
     private String image;
 
@@ -55,12 +56,21 @@ public class Preschool {
         this.image = image;
     }
 
+    public String getShortDescription() {
+
+        return shortDescription;
+    }
+
+    public void setShortDescription( String shortDescription ) {
+
+        this.shortDescription = shortDescription;
+    }
 
     @Override public String toString() {
 
         return "Preschool" +
                 + id +
                "as shown in the photo" + image + "is called" + name + "the url is" +
-                url;
+                url + shortDescription;
     }
 }
