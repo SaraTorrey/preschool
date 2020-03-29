@@ -15,6 +15,17 @@ public class Preschool {
     private String shortDescription;
     private String url;
     private String image;
+    private String comment;
+
+    public String getComment() {
+
+        return comment;
+    }
+
+    public void setComment( String comment ) {
+
+        this.comment = comment;
+    }
 
     public Long getId() {
 
