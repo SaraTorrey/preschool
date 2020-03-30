@@ -1,25 +1,24 @@
 <header th:insert="fragments/header.html"> </header>
 
     <div class="ui raised very padded text container segment" >
-        <table class="ui segment container">
-            <th:block th:each="preschool : ${preschools}">
-                <tr>
-                    <td class="ui medium rectangular image">
-                        <img th:src="${preschool.image}"/>
-                    </td>
-                    <td>
-                        <a th:href="${preschool.url}" th:text="${preschool.name}"></a>
-                    </td>
-                    <td>
-                        <h5 th:utext="${preschool.shortDescription}"></h5>
-                    </td>
-                    <td>
-                        <h5 th:utext="${preschool.comment}"></h5>
-                    </td>
-                </tr>
-            </th:block>
-        </table>
-        <a class="ui segment container" href="addPreschool">Add a Preschool</a>
-    </div>
+        <th:block th:each="preschool : ${preschools}">
+        <div class="ui grid purple table">
+            <div class="sixteen wide column">
+                <a class="ui center sixteen wide column" th:href="${preschool.url}" th:text="${preschool.name}"></a>
+            </div>
+            <div class="ui large rectangular image center">
+                <img th:src="${preschool.image}"/>
+            </div>
+            <div class="sixteen wide column">
+                <h5 th:utext="${preschool.shortDescription}"></h5>
+            </div>
+            <div class="sixteen wide column">
+                <button class="ui reverse button green" href="addPreschool">Add a comment</button>
+            </div>
+        </div>
+        </th:block>
+            <div class="ui grid">
+                <button class="ui center column button teal" href="addPreschool">Add a Preschool</button>
+            </div>
 
 <footer th:insert="fragments/footer.html"> </footer>
