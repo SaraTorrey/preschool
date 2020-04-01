@@ -1,24 +1,24 @@
 <header th:insert="fragments/header.html"> </header>
 
     <div class="ui raised very padded text container segment" >
-        <th:block th:each="preschool : ${preschools}">
+        <th:block th:each="kita : ${kitas}">
         <div class="ui grid purple table">
             <div class="sixteen wide column">
-                <a class="ui center sixteen wide column" th:href="${preschool.url}" th:text="${preschool.name}"></a>
+                <a class="ui center sixteen wide column" th:href="${kita.url}" th:text="${kita.name}"></a>
             </div>
             <div class="ui large rectangular image center">
-                <img th:src="${preschool.image}"/>
+                <img th:src="${kita.image}"/>
             </div>
             <div class="sixteen wide column">
-                <h5 th:utext="${preschool.shortDescription}"></h5>
+                <h5 th:utext="${kita.shortDescription}"></h5>
             </div>
             <div class="sixteen wide column">
-                <button class="ui reverse button green" href="addPreschool">Add a comment</button>
+                <a class="ui reverse button green" href="comments/new">Add a comment</a>
             </div>
         </div>
         </th:block>
             <div class="ui grid">
-                <button class="ui center column button teal" href="addPreschool">Add a Preschool</button>
+                <a href="addKita" class="ui center column button teal">Add a Kita</a>
             </div>
 
 <footer th:insert="fragments/footer.html"> </footer>

@@ -1,9 +1,9 @@
 <header th:insert="fragments/header.html"> </header>
 
     <div class="ui raised very padded text container segment" >
-        <form class="ui form"  action="#" type="submit" th:action="@{/addPreschool}" th:object="${preschool}" method="post">
+        <form class="ui form"  action="#" type="submit" th:action="@{/addKita}" th:object="${kita}" method="post">
             <div class="field">
-                <label>Preschool Name</label>
+                <label>Kita Name</label>
                 <input type="text" name="name" placeholder="Name">
             </div>
             <div class="field">

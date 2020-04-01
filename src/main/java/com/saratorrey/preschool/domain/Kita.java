@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Preschool {
+public class Kita {
 
     @Id
     @GeneratedValue
@@ -16,6 +16,11 @@ public class Preschool {
     private String url;
     private String image;
     private String comment;
+
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getComment() {
 

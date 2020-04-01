@@ -1,0 +1,19 @@
+<header th:insert="fragments/header.html"> </header>
+
+<link rel="stylesheet" type="text/css" href="/landing.css">
+
+<div class="ui raised very padded text container segment" >
+    <form class="ui form"  action="#" type="submit" th:action="@{/comments/new" th:object="${preschool}" method="post">
+        <div>
+            <p>Id: <input type="text" th:field="*{id}" /></p>
+
+            <label>Add A Comment</label>
+
+            <input type="url" name="url" placeholder="url">
+        </div>
+        <button class="ui button" type="submit">Submit</button>
+    </form>
+</div>
+
+<footer th:insert="fragments/footer.html"> </footer>
+
