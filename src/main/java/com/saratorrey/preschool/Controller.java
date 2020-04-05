@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @org.springframework.stereotype.Controller
 public class Controller {
@@ -30,32 +31,38 @@ public class Controller {
         return "kitaList";
     }
 
+    // Displaying add kita page, id does not exist yet.
     @GetMapping( value = "/addKita" )
     public String addKita() {
 
         return "addKita";
     }
 
+    // Adding kita, id does not exist yet, but it will after save.
     @PostMapping( "/addKita" )
-    public String post( @ModelAttribute Kita kita, BindingResult errors, Model model ) {
+    public String addKita( @ModelAttribute Kita kita, BindingResult errors, Model model ) {
 
         kitaRepo.save( kita );
         return "redirect:kitaList";
     }
 
+    // Display add comment page.
     @GetMapping( value = "kita/{id}/comments/new" )
     public String comments( @PathVariable Long id, Model model ) {
 
-        model.addAttribute( "kita", kitaRepo.findById( id ) );
+        model.addAttribute( "kita", kitaRepo.findById( id ).get() );
 
         return "comments/new";
     }
 
-//        Kita kita = kitaRepo.findById( Long.parseLong( id ) ).get();
-//        model.addAttribute( "kita", kita );
+    @PostMapping( "kita/comments/new" )
+    public String addComment( @RequestParam( "comment") String comment,
+                              @RequestParam("kitaId") Long kitaId,
+                              @RequestParam("commentName") String commentName,
+                              Model model ) {
 
-    // /kita
-    // /kita/{id}/addComment
-    // /kita/{id}/comments/add
-    // /kita/{id}/comments/edit/{commentid}
+        System.out.println( comment );
+//        kitaRepo.save( kita );
+        return "redirect:kitaList";
+    }
 }
