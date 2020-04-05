@@ -13,7 +13,7 @@
                 <h5 th:utext="${kita.shortDescription}"></h5>
             </div>
             <div class="sixteen wide column">
-                <a class="ui reverse button green" href="comments/new">Add a comment</a>
+                <a class="ui reverse button green" th:href="${'kita/'} + ${kita.id} + ${'/comments/new'}">Add a comment</a>
             </div>
         </div>
         </th:block>

@@ -17,7 +17,7 @@
     <!--</div>-->
 <!--</div>-->
 <div class="ui raised very padded text container segment" >
-    <form class="ui form"  action="#" type="submit" th:action="@{/comments/${kita.id}/new}" th:object="${kita}" method="post">
+    <form class="ui form"  action="#" type="submit" th:action="@{comments/new}" th:object="${kita}" method="post">
         <div>
             <p>Id: <input type="text" th:field="*{id}" /></p>
 
