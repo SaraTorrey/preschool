@@ -1,8 +1,13 @@
 package com.saratorrey.preschool.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Kita {
@@ -15,21 +20,22 @@ public class Kita {
     private String shortDescription;
     private String url;
     private String image;
-    private String comment;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<KitaComment> comments = new ArrayList<>();
 
-    public void setId(long id) {
+    public List<KitaComment> getComments() {
+
+        return comments;
+    }
+
+    public void setComments( List<KitaComment> comments ) {
+
+        this.comments = comments;
+    }
+
+    public void setId( long id) {
         this.id = id;
-    }
-
-    public String getComment() {
-
-        return comment;
-    }
-
-    public void setComment( String comment ) {
-
-        this.comment = comment;
     }
 
     public Long getId() {

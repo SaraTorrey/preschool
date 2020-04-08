@@ -15,10 +15,14 @@
             <div class="sixteen wide column">
                 <a class="ui reverse button green" th:href="${'kita/'} + ${kita.id} + ${'/comments/new'}">Add a comment</a>
             </div>
-        </div>
-        </th:block>
-            <div class="ui grid">
-                <a href="addKita" class="ui center column button teal">Add a Kita</a>
+            <div>
+                <p th:each="comment : ${kita.comments}" th:text="${comment}"></p>
             </div>
+        </th:block>
+        </div>
+
+        <div class="ui grid">
+            <a href="addKita" class="ui center column button teal">Add a Kita</a>
+        </div>
 
 <footer th:insert="fragments/footer.html"> </footer>

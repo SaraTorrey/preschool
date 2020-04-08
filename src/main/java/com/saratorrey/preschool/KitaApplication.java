@@ -1,6 +1,7 @@
 package com.saratorrey.preschool;
 
 import com.saratorrey.preschool.domain.Kita;
+import com.saratorrey.preschool.domain.KitaComment;
 import com.saratorrey.preschool.example.PreschoolRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,13 @@ public class KitaApplication {
 		altonaKita.setName( "Altona" );
 		altonaKita.setImage( "https://images.unsplash.com/photo-1453342664588-b702c83fc822?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1640&q=80" );
 		altonaKita.setShortDescription( "Great school with a nice playground" );
-		altonaKita.setComment( "Great school with a nice playground" );
+
+		KitaComment kitaComment = new KitaComment();
+		kitaComment.setName( "Good Kita" );
+		kitaComment.setComment("All the details");
+
+		altonaKita.getComments().add( kitaComment );
+
 		preschoolRepository.save( altonaKita );
 		System.out.println( altonaKita.toString() );
 
@@ -36,7 +43,6 @@ public class KitaApplication {
 		ottensenKita.setName( "Ottensen" );
 		ottensenKita.setImage( "https://images.unsplash.com/photo-1564429238817-393bd4286b2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80" );
 		ottensenKita.setShortDescription( "Great Kita with a nice team of teachers" );
-		ottensenKita.setComment( "Great Kita with a nice team of teachers" );
 		preschoolRepository.save( ottensenKita );
 		System.out.println( ottensenKita.toString() );
 	}

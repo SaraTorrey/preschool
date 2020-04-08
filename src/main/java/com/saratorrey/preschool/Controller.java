@@ -1,6 +1,7 @@
 package com.saratorrey.preschool;
 
 import com.saratorrey.preschool.domain.Kita;
+import com.saratorrey.preschool.domain.KitaComment;
 import com.saratorrey.preschool.domain.KitaRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,8 +62,15 @@ public class Controller {
                               @RequestParam("commentName") String commentName,
                               Model model ) {
 
-        System.out.println( comment );
-//        kitaRepo.save( kita );
-        return "redirect:kitaList";
+        Kita kita = kitaRepo.findById( kitaId ).get();
+
+        KitaComment kitaComment = new KitaComment();
+        kitaComment.setComment( comment );
+        kitaComment.setName( commentName );
+
+        kita.getComments().add( kitaComment);
+        kitaRepo.save( kita );
+
+        return "redirect:/kitaList";
     }
 }
