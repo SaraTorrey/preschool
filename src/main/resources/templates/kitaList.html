@@ -2,25 +2,25 @@
 
     <div class="ui raised very padded text container segment" >
         <th:block th:each="kita : ${kitas}">
-        <div class="ui grid purple table">
-            <div class="sixteen wide column">
-                <a class="ui center sixteen wide column" th:href="${kita.url}" th:text="${kita.name}"></a>
-            </div>
-            <div class="ui large rectangular image center">
-                <img th:src="${kita.image}"/>
-            </div>
-            <div class="sixteen wide column">
-                <h5 th:utext="${kita.shortDescription}"></h5>
-            </div>
-            <div class="sixteen wide column">
-                <a class="ui reverse button green" th:href="${'kita/'} + ${kita.id} + ${'/comments/new'}">Add a comment</a>
-            </div>
-            <div>
-                <p th:each="comment : ${kita.comments}" th:text="${comment}"></p>
+            <div class="ui grid purple table">
+                <div class="sixteen wide column">
+                    <a class="ui center sixteen wide column" th:href="${kita.url}" th:text="${kita.name}"></a>
+                </div>
+                <div class="ui large rectangular image center">
+                    <img th:src="${kita.image}"/>
+                </div>
+                <div class="sixteen wide column">
+                    <h5 th:utext="${kita.shortDescription}"></h5>
+                </div>
+                <div class="sixteen wide column">
+                    <a class="ui reverse button green" th:href="${'kita/'} + ${kita.id} + ${'/comments/new'}">Add a comment</a>
+                </div>
+                <div>
+                    <p th:each="comment : ${kita.comments}" th:text="${comment.name}"></p>
+                    <p th:each="comment : ${kita.comments}" th:text="${comment.comment}"></p>
+                </div>
             </div>
         </th:block>
-        </div>
-
         <div class="ui grid">
             <a href="addKita" class="ui center column button teal">Add a Kita</a>
         </div>
