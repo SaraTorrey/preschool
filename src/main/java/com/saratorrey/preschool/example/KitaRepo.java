@@ -1,4 +1,6 @@
-package com.saratorrey.preschool.domain;
+package com.saratorrey.preschool.example;
+
+import com.saratorrey.preschool.domain.Kita;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 

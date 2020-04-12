@@ -22,14 +22,14 @@ public class Kita {
     private String image;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<KitaComment> comments = new ArrayList<>();
+    private List<Comment> comments = new ArrayList<>();
 
-    public List<KitaComment> getComments() {
+    public List<Comment> getComments() {
 
         return comments;
     }
 
-    public void setComments( List<KitaComment> comments ) {
+    public void setComments( List<Comment> comments ) {
 
         this.comments = comments;
     }

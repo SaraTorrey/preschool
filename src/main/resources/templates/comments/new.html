@@ -1,32 +1,17 @@
 <header th:insert="fragments/header.html"> </header>
 
-<!--<div class="container">-->
-    <!--<div class="row">-->
-        <!--<h1 style="text-align: center">Add New Comment to <%= campground.name %></h1>-->
-        <!--<div style="width: 30%; margin: 25px auto;">-->
-            <!--<form action="/campgrounds/<%= campground._id %>/comments" method="POST">-->
-                <!--<div class="form-group">-->
-                    <!--<input class="form-control" type="text" name="comment[text]" placeholder="text">-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                    <!--<button class="btn btn-lg btn-primary btn-block">Submit!</button>-->
-                <!--</div>-->
-            <!--</form>-->
-            <!--<a href="/campgrounds">Go Back</a>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-<div class="ui raised very padded text container segment" >
+<div class="ui raised very padded text container segment" >Add Comment
     <form class="ui form"  action="#" type="submit" th:action="@{/kita/comments/new}" th:object="${kita}" method="post">
-        <div>
-            <input type="hidden" th:value="${kita.id}" name="kitaId"/>
-
-            <label>Add A Comment</label>
-
-            <input type="text" name="commentName" placeholder="Comment Name">
-            <input type="text" name="comment" placeholder="Comment">
-        </div>
-        <hr/>
+        <table class="ui single line table">
+                <tr>
+                    <td>
+                        <input type="hidden" th:value="${kita.id}" name="kitaId"/>
+                    </td>
+                    <td>
+                        <input type="text" name="comment" placeholder="Comment">
+                    </td>
+                </tr>
+        </table>
         <button class="ui olive button" type="submit">Submit</button>
     </form>
 </div>

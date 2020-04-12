@@ -1,19 +1,18 @@
 <header th:insert="fragments/header.html"> </header>
 
-<link rel="stylesheet" type="text/css" href="/landing.css">
-
 <div class="ui raised very padded text container segment" >
-    <form class="ui form"  action="#" type="submit" th:action="@{/comments/new" th:object="${preschool}" method="post">
+    <form class="ui form"  action="#" type="submit" th:action="@{/kita/comments/edit}" th:object="${kita}" method="post">
         <div>
-            <p>Id: <input type="text" th:field="*{id}" /></p>
+            <input type="hidden" th:value="${kita.id}" name="kitaId"/>
 
-            <label>Add A Comment</label>
+            <label>Edit Your Comment</label>
 
-            <input type="url" name="url" placeholder="url">
+            <input type="text" name="commentName" placeholder="Comment Name">
+            <input type="text" name="comment" placeholder="Comment">
         </div>
-        <button class="ui button" type="submit">Submit</button>
+        <hr/>
+        <button class="ui olive button" type="submit">Update</button>
     </form>
 </div>
 
 <footer th:insert="fragments/footer.html"> </footer>
-

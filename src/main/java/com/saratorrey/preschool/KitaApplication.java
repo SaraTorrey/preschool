@@ -1,7 +1,7 @@
 package com.saratorrey.preschool;
 
 import com.saratorrey.preschool.domain.Kita;
-import com.saratorrey.preschool.domain.KitaComment;
+import com.saratorrey.preschool.domain.Comment;
 import com.saratorrey.preschool.example.PreschoolRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +29,11 @@ public class KitaApplication {
 		altonaKita.setImage( "https://images.unsplash.com/photo-1453342664588-b702c83fc822?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1640&q=80" );
 		altonaKita.setShortDescription( "Great school with a nice playground" );
 
-		KitaComment kitaComment = new KitaComment();
-		kitaComment.setName( "Good Kita" );
-		kitaComment.setComment("All the details");
+		Comment comment = new Comment();
+		comment.setName( "Good Kita" );
+		comment.setComment( "All the details");
 
-		altonaKita.getComments().add( kitaComment );
+		altonaKita.getComments().add( comment );
 
 		preschoolRepository.save( altonaKita );
 		System.out.println( altonaKita.toString() );

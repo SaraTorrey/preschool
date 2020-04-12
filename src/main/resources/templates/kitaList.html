@@ -1,8 +1,17 @@
 <header th:insert="fragments/header.html"> </header>
 
+<script th:inline="javascript">
+    $('.ui.rating')
+        .rating({
+                    initialRating: 1,
+                    maxRating: 5
+                })
+    ;
+</script>
+
     <div class="ui raised very padded text container segment" >
         <th:block th:each="kita : ${kitas}">
-            <div class="ui grid purple table">
+            <div class="ui grid violet table">
                 <div class="sixteen wide column">
                     <a class="ui center sixteen wide column" th:href="${kita.url}" th:text="${kita.name}"></a>
                 </div>
@@ -14,15 +23,32 @@
                 </div>
                 <div class="sixteen wide column">
                     <a class="ui reverse button green" th:href="${'kita/'} + ${kita.id} + ${'/comments/new'}">Add a comment</a>
-                </div>
-                <div>
-                    <p th:each="comment : ${kita.comments}" th:text="${comment.name}"></p>
-                    <p th:each="comment : ${kita.comments}" th:text="${comment.comment}"></p>
+
+                    <div>
+                        <div class="ui mini star rating"></div>
+                        <table class="ui fixed table">
+                            <th:block th:each="comment : ${kita.comments}">
+                                <thead>
+                                    <tr>
+                                        <th th:text="${comment.name}"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <td th:text="${comment.comment}"></td>
+                                    <td>
+                                        <a class="ui reverse button violet" th:href="${'kita/'} + ${kita.id} + ${'/comments/edit'}">Edit comment</a>
+                                        <a class="ui reverse button red" th:href="${'kita/'} + ${kita.id} + ${'/comments/'} + ${comment.id} + ${'/delete'}">Delete comment</a>
+                                    </td>
+                                </tbody>
+                            </th:block>
+                        </table>
+                    </div>
                 </div>
             </div>
         </th:block>
-        <div class="ui grid">
-            <a href="addKita" class="ui center column button teal">Add a Kita</a>
-        </div>
 
+        <div class="ui grid">
+            <a href="addKita" class="ui center column button yellow">Add a Kita</a>
+        </div>
+    </div>
 <footer th:insert="fragments/footer.html"> </footer>

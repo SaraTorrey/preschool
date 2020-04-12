@@ -1,8 +1,9 @@
 package com.saratorrey.preschool;
 
 import com.saratorrey.preschool.domain.Kita;
-import com.saratorrey.preschool.domain.KitaComment;
-import com.saratorrey.preschool.domain.KitaRepo;
+import com.saratorrey.preschool.domain.Comment;
+import com.saratorrey.preschool.example.CommentRepo;
+import com.saratorrey.preschool.example.KitaRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -18,6 +19,9 @@ public class Controller {
 
     @Autowired
     KitaRepo kitaRepo;
+
+    @Autowired
+    CommentRepo commentRepo;
 
     @GetMapping( value = "/" )
     public String landing() {
@@ -57,19 +61,53 @@ public class Controller {
     }
 
     @PostMapping( "kita/comments/new" )
-    public String addComment( @RequestParam( "comment") String comment,
-                              @RequestParam("kitaId") Long kitaId,
-                              @RequestParam("commentName") String commentName,
-                              Model model ) {
+    public String addComment( @RequestParam( "comment" ) String comment,
+                              @RequestParam( "kitaId" ) Long kitaId) {
 
         Kita kita = kitaRepo.findById( kitaId ).get();
 
-        KitaComment kitaComment = new KitaComment();
+        Comment kitaComment = new Comment();
         kitaComment.setComment( comment );
-        kitaComment.setName( commentName );
 
-        kita.getComments().add( kitaComment);
+        kita.getComments().add( kitaComment );
         kitaRepo.save( kita );
+
+        return "redirect:/kitaList";
+    }
+
+    @GetMapping( value = "kita/{id}/comments/edit" )
+    public String startEditComments( @PathVariable Long id, Model model ) {
+
+        model.addAttribute( "kita", kitaRepo.findById( id ).get() );
+
+        return "comments/edit";
+    }
+
+    @PostMapping( "kita/comments/edit" )
+    public String saveEditComment( @RequestParam( "comment" ) String commentText,
+                                   @RequestParam( "kitaId" ) Long kitaId,
+                                   @RequestParam( "commentName" ) String commentName,
+                                   Model model ) {
+
+        Kita kita = kitaRepo.findById( kitaId ).get();
+
+        Comment comment = new Comment();
+        comment.setComment( commentText );
+        comment.setName( commentName );
+
+        kita.getComments().add( comment );
+        kitaRepo.save( kita );
+
+        return "redirect:/kitaList";
+    }
+
+    @GetMapping( "kita/{kitaId}/comments/{commentId}/delete" )
+    public String deleteComment( @PathVariable Long kitaId, @PathVariable Long commentId ) {
+
+        Kita kita = kitaRepo.findById( kitaId ).get();
+        Comment comment = commentRepo.findById( commentId ).get();
+
+        kita.getComments().remove( comment );
 
         return "redirect:/kitaList";
     }
